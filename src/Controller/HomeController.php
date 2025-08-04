@@ -16,11 +16,11 @@ final class HomeController extends AbstractController
     public function index(string $name = '', Request $request): Response
     {
         $greet = '';
-        if($name){
+        if ($name) {
             $greet = sprintf('<h1>Hello %s!</h1>', htmlspecialchars($name));
         }
 
-        dump($request);
+        dump($request); // permet d'affiicher le contenu de la variable
 
         return new Response('<html>
             <body>
