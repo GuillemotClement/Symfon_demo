@@ -11,11 +11,17 @@ final class HomeController extends AbstractController
     // on définit le chemin qui mathc avec ce controlleur
     // le premier argument est le path utiliser 
     // le second est le nom de la route qui permet d'y faire référence pour créer des liens.
-    #[Route('/', name: 'homepage')]
-    public function index(): Response
+    #[Route('/hello/{name}', name: 'homepage')]
+    public function index(string $name = ''): Response
     {
+        $greet = '';
+        if($name){
+            $greet = sprintf('<h1>Hello %s!</h1>', htmlspecialchars($name));
+        }
+
         return new Response('<html>
             <body>
+                $greet
                 <img src="/images/under-construction.gif" />
             </body>
         </html>');
